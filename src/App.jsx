@@ -1,6 +1,8 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Courses from "./components/CoursesSection";
+import Why from "./components/Why"
+import Who from "./components/Who"
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -9,6 +11,8 @@ export default function App() {
       <Header />
       <Hero />
       <Courses />
+      <Why/>
+      <Who/>
       <Footer />
     </>
   );
