@@ -1,11 +1,11 @@
 // src/lib/supabaseClient.js
 import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Directly define credentials
+const SUPABASE_URL = "https://mzivnzqvscmggbadwnqy.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16aXZuenF2c2NtZ2diYWR3bnF5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0MTYwMzcsImV4cCI6MjA4MDk5MjAzN30.trDDDyQ9WV8ioSqZaXsdWpOZREdl0qsOmAse3KZUx6Q";
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.warn('Supabase env variables are missing. Check VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local');
-}
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+export const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);

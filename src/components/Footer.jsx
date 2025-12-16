@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { 
   Instagram, 
@@ -19,6 +21,26 @@ export default function Footer() {
     purple: "#3f348f",
     pink: "#ff0065",
     yellow: "#ffc500",
+  };
+
+  // Define Links to match Header
+  const footerLinks = [
+    { name: 'Courses', id: 'courses' },
+    { name: 'Why Us', id: 'why' },
+    { name: 'Learning', id: 'learning' },
+    { name: 'FAQ', id: 'faq' },
+    { name: 'Testimonials', id: 'testimonials' },
+  ];
+
+  // Scroll Handler (Same logic as Header to ensure consistent offset)
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -100; 
+      const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -84,17 +106,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* --- 2. EXPLORE --- */}
+          {/* --- 2. EXPLORE (UPDATED LINKS) --- */}
           <div className="md:col-span-3">
             <h4 className="text-xs font-bold text-[#1a1a2e] uppercase tracking-widest mb-6 flex items-center gap-2">
               <span className="w-8 h-[1px]" style={{ backgroundColor: colors.purple }}></span> Explore
             </h4>
             <ul className="space-y-4">
-              {['Our Courses', 'Why Choose Us', 'Curriculum', 'Placement Support'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm font-medium text-slate-500 hover:text-[#3F348F] transition-colors duration-200 flex items-center gap-2 group">
+              {footerLinks.map((item) => (
+                <li key={item.name}>
+                  <a 
+                    href={`#${item.id}`} 
+                    onClick={(e) => scrollToSection(e, item.id)}
+                    className="text-sm font-medium text-slate-500 hover:text-[#3F348F] transition-colors duration-200 flex items-center gap-2 group cursor-pointer"
+                  >
                     <span className="w-1 h-1 rounded-full bg-slate-300 group-hover:bg-[#3F348F] transition-colors"></span>
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
